@@ -1,0 +1,52 @@
+package im;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class boj2491 {
+	static int N;
+	static int[] a;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		a = new int[N];
+		for(int i=0;i<N;i++) {
+			a[i] = sc.nextInt();
+		}
+		int max = 0;
+		for(int i=0;i<N-1;i++) {
+			max = Math.max(max, method(i));
+		}	
+	}
+	static int method(int i) {
+		int result = 1;
+		int flag = 0;
+		while(i<N) {
+			i++;
+			result++;
+			if(a[i]>a[i-1]) {
+				flag = 1;
+				break;
+			}
+			if(a[i]<a[i-1]) {
+				flag=-1;
+				break;
+			}
+		}
+		if(flag==1) {
+			while(i<N-1) {
+				if(a[i+1]<a[i]) {
+					result++;
+					break;
+				}
+				result++;
+				i++;
+			}
+		}
+		if(flag==-1) {
+			
+		}
+		return result;
+	}
+}

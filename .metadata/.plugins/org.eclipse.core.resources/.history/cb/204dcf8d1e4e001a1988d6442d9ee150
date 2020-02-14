@@ -1,0 +1,64 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class d4_4408 {
+	static class Student implements Comparable<Student>{
+		int s;
+		int e;
+		Student(int s, int e){
+			this.s = s;
+			this.e = e;
+		}
+		@Override
+		public int compareTo(Student o) {
+			return this.e - o.e;
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		for(int t=1;t<=T;t++) {
+			int N = sc.nextInt();
+			ArrayList<Student> stu = new ArrayList<>();
+			int n1=0;
+			int	n2=0;
+			for(int i=0;i<N;i++) {
+				n1 = sc.nextInt();
+				n2 = sc.nextInt();
+				if(n1<n2) {
+					stu.add(new Student(n1,n2));
+				}else {
+					stu.add(new Student(n2,n1));
+				}
+			}
+//			Collections.sort(stu);
+			int ans = 1;
+			int size = stu.size();
+//			while(size!=0) {
+//				Iterator<Student> it = stu.iterator();
+//				int comp = stu.get(0).e;
+				int comp1, comp2;
+				int start=0;
+				int end=1;
+				while(end!=N) {
+					comp1 = stu.get(end).s;
+					comp2 = stu.get(end).e;
+					for(int i=start; i<end;i++) {
+						if((stu.get(i).e>=comp1 && stu.get(i).s<=comp1) ||
+								(stu.get(i).e>=comp2 && stu.get(i).s<=comp2) {
+							start = end;
+							ans++;
+							break;
+						}
+					}
+					end++;
+				}
+				
+			System.out.println("#"+t+" "+ans);
+		}
+	}
+}

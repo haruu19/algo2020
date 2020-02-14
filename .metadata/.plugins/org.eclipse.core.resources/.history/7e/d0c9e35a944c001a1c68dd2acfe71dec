@@ -1,0 +1,16 @@
+package im;
+
+import java.util.Scanner;
+
+public class boj1592 {
+	static int N,M,L;
+	static int[] a;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		M = sc.nextInt();
+		L = sc.nextInt();
+	}
+
+}

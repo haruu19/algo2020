@@ -1,0 +1,9 @@
+package day7;
+
+public class A2 {
+	public static void main(String[] args) {
+		int N = 13;
+		int[] a = new int[N+1];
+		
+	}
+}

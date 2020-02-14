@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class d4_4408 {
+	static class Student implements Comparable<Student>{
+		int s;
+		int e;
+		Student(int s, int e){
+			this.s = s;
+			this.e = e;
+		}
+		@Override
+		public int compareTo(Student o) {
+			return this.e - o.e;
+		}
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		for(int t=1;t<=T;t++) {
+			
+		}
+	}
+
+}

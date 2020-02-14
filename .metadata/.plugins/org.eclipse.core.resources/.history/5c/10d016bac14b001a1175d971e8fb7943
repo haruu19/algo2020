@@ -1,0 +1,18 @@
+package day7;
+
+public class B {
+	public static void main(String[] args) {
+		int size = 10;
+		char[] datas = new char[26+1];
+		for(int i=1;i<=size;i++) {
+			datas[i]=(char)(i+64);//알파벳 입력
+		}
+		//inOrder()출력
+		inOrder(datas);
+		//findParend(5);
+		//findChild(3)
+	}
+	static void inOrder(char[] datas) {
+		
+	}
+}

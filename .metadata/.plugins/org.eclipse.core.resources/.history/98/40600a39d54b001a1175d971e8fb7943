@@ -1,0 +1,37 @@
+package day7;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class sweaSafe {
+
+	static int[] dx = {1,-1,0,0};
+	static int[] dy = {0,0,1,-1};
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int T = Integer.parseInt(br.readLine());
+		for(int t=1;t<=T;t++) {
+			String s = br.readLine();
+			StringTokenizer st = new StringTokenizer(s);
+			int N = Integer.parseInt(st.nextToken());
+			int B = Integer.parseInt(st.nextToken());
+			int[][] a = new int[N+1][N+1];
+			int x, y,nx,ny;
+			for(int i=1;i<=B;i++) {
+				s = br.readLine();
+				st = new StringTokenizer(s);
+				x = Integer.parseInt(st.nextToken());
+				y = Integer.parseInt(st.nextToken());
+				for(int j=1;j<=2;j++) {
+					for(int k=0;k<4;k++) {
+						
+					}
+				}
+			}
+		}
+	}
+
+}

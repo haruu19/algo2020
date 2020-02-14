@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+public class boj_7576 {
+	static int M,N;
+	static int[][] a;
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		M = sc.nextInt();
+		N = sc.nextInt();
+		a = new int[N][M];
+	}
+	
+}

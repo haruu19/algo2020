@@ -1,0 +1,29 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class d3_1873 {
+	static int[] dx = {-1,1,0,0};
+	static int[] dy = {0,0,-1,1};
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		for(int t=1;t<=T;t++) {
+			int H = sc.nextInt();
+			int W = sc.nextInt();
+			char[][] map = new char[H][W];
+			sc.nextLine();
+			for(int i=0;i<H;i++) {
+				String s = sc.nextLine();
+				map[i] = s.toCharArray();
+			}
+			for(int i=0;i<H;i++) {
+				for(int j=0;j<W;j++) {
+					System.out.println(map[i][j]+" ");
+				}
+				System.out.println();
+			}
+		}
+	}
+
+}

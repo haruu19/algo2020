@@ -1,0 +1,25 @@
+package day8;
+
+public class A {
+	static int[] parent;
+	public static void main(String[] args) {
+		//10개정도의 집합이 있어서 그 집합을 서로소집합으로 관리하기
+		parent = new int[10+1];
+		makeSet();
+		int idx = findSet(2);
+		System.out.println(idx);
+	}
+	static int findSet(int x,int y) {
+		x = findset(x);
+		y = findset(y);
+		if(x==y) {
+			return
+		}
+		return 1;
+	}
+	static void makeset() {
+		for(int i=1;i<parent.length;i++) {
+			parent[i] = i;
+		}
+	}
+}

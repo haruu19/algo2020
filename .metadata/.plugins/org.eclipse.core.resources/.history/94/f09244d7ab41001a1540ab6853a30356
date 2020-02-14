@@ -1,0 +1,47 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class Dice2 {
+	static int[] arr;
+	static int sum=0;
+	public static void main(String[] args) throws FileNotFoundException {
+		Scanner sc = new Scanner(System.in);
+		int N=0,M=0;
+		N = sc.nextInt();
+		M = sc.nextInt();
+		arr = new int[N+1];
+		arr[0]=1;
+		dice(1,N,M);
+		
+	}
+	static void print() {
+		for(int i=1;i<arr.length;i++) {
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+	}
+	static void dice(int idx, int N, int M) {
+		if(N==0&&sum==M) {
+			print();
+			return;
+		}
+		//실행코드
+		
+		//재귀
+		for(int i=1;i<=6;i++) {
+			arr[idx] = i;
+			if(findNum(idx,i))
+				continue;
+			sum+=i;
+			dice(idx+1,N-1,M);
+		}
+	}
+	static boolean findNum(int end, int num) {
+		for(int i=1;i<end;i++){
+			if(arr[i] == num)
+				return true;
+		}
+		return false;
+	}
+}

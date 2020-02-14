@@ -1,0 +1,16 @@
+package im;
+
+import java.util.Scanner;
+
+public class boj10157 {
+	static int C,R,K;
+	static int[] dx= {1,0,-1,0};
+	static int[] dy = {0,1,0,-1};
+	static int[][] a;
+	static boolean[][] v;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+	}
+
+}

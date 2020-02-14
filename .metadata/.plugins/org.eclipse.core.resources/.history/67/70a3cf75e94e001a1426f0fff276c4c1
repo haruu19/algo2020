@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class boj_7576 {
+	static int M,N;
+	static int[][] a;
+	static int[] dx = {1,-1,0,0};
+	static int[] dy = {0,0,1,-1};
+	static boolean[][] cur;//현재 처리할 토마토 체크
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		M = sc.nextInt();
+		N = sc.nextInt();
+		a = new int[N][M];
+		cur = new boolean[N][M];
+		for(int i=0;i<N;i++) {
+			for(int j=0;j<M;j++) {
+				a[i][j]=sc.nextInt();
+				if(a[i][j]==1)
+					cur[i][j]=true;
+			}
+		}
+		
+	}
+	
+}

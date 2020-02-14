@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class d4_4408 {
+	static class Student implements Comparable<Student>{
+		int s;
+		int e;
+		Student(int s, int e){
+			this.s = s;
+			this.e = e;
+		}
+		@Override
+		public int compareTo(Student o) {
+			return this.e - o.e;
+		}
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		for(int t=1;t<=T;t++) {
+			int N = sc.nextInt();
+			ArrayList<Student> stu = new ArrayList<>();
+			for(int i=0;i<N;i++)
+				stu.add(new Student(sc.nextInt(),sc.nextInt()));
+			Collections.sort(stu);
+			
+			Iterator<Student> it = stu.iterator();
+			int size = stu.size();
+			while(size!=0) {
+				int comp = stu.get(0).e;
+				while(!it.hasNext()) {
+					Student temp = it.next();
+					if(temp.s<=comp && temp.e>=comp)
+						it.remove();
+				}
+					
+			}
+		}
+	}
+
+}

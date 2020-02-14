@@ -1,0 +1,63 @@
+package im;
+
+import java.util.Scanner;
+
+public class boj2578 {
+	static int[][] a;
+	static int k;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		a = new int[5][5];
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<5;j++) {
+				a[i][j] = sc.nextInt();
+			}
+		}
+		int temp;
+		for(k=1;k<=25;k++) {
+			temp = sc.nextInt();
+			for(int i=0;i<5;i++) {
+				for(int j=0;j<5;j++) {
+					if(a[i][j]==temp)
+						a[i][j]=0;
+				}
+			}
+			if(check()>=3) {
+				System.out.println(k);
+				return;
+			}
+		}
+	}
+	static int check() {
+		int result = 0;
+		
+		//가로세로 빙고여부
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<5;j++) {
+				if(a[i][j]!=0)
+					break;
+				result++;
+			}
+		}
+		for(int j=0;j<5;j++) {
+			for(int i=0;i<5;i++) {
+				if(a[i][j]!=0)
+					break;
+				result++;
+			}
+		}
+		//대각선 빙고여부
+		for(int i=0;i<5;i++) {
+			if(a[i][i]!=0)
+				break;
+			result++;
+		}
+		for(int i=0;i<5;i++) {
+			if(a[4-i][i]!=0)
+				break;
+			result++;
+		}
+		return result;
+	}
+}

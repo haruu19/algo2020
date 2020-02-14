@@ -1,0 +1,32 @@
+package im;
+
+import java.util.Scanner;
+
+public class boj10157 {
+	static int C,R,K;
+	static int[] dx= {1,0,-1,0};
+	static int[] dy = {0,1,0,-1};
+	static int[][] a;
+	static boolean[][] v;
+	static int idx;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		C = sc.nextInt();
+		R = sc.nextInt();
+		K = sc.nextInt();
+		a = new int[R+2][C+2];
+		v = new boolean[R+2][C+2];
+		int x,y,nx,ny;
+		x=0;
+		y=0;
+		while(true) {
+			if(a[nx][ny]
+			
+		}
+	}
+	static boolean isOut(int x, int y) {
+		if(x==0||x==R||y==0||y==C)
+			return true;
+		return false;
+	}
+}

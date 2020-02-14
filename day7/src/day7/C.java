@@ -1,0 +1,70 @@
+package day7;
+
+public class C {
+	public static void main(String[] args) {
+		BST bst = new BST();
+		bst.insert(9);
+		bst.insert(4);
+		System.out.println(bst.root.left.data);
+		System.out.println(bst.search(4));
+	}
+	
+	static class BST{
+		Node root;
+		
+		boolean search(int data) {
+			boolean flag = false;
+//			if(root==null) {
+//				return false;
+//			}
+			Node temp = root;
+			while(temp!=null) {
+				if(temp.data==data) {
+					return true;
+				}else if(temp.data>data) {
+					temp = temp.left;
+				}else {
+					temp = temp.right;
+				}
+			}
+			return flag;
+		}
+		
+		void insert(int data) {
+			Node temp = new Node(data);
+			Node p = root;
+			if(root==null) {
+				root = temp;
+				return;
+			}			
+			
+			while(p!=null) {
+				if(data==p.data) {
+					return;
+				}else if(data<p.data) {
+					if(p.left==null) {
+						p.left = temp;
+						break;
+					}
+					p = p.left;
+				}else {
+					if(p.right==null) {
+						p.right=temp;
+						break;
+					}
+					p = p.right;
+				}
+			}
+		}
+	}
+	static class Node{
+		int data;
+		Node left;
+		Node right;
+		public Node(int data) {
+			super();
+			this.data = data;
+		}
+	}
+	
+}

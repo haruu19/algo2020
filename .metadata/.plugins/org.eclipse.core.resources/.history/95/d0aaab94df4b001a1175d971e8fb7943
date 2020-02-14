@@ -1,0 +1,36 @@
+package day7;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class D3_1233 {
+
+	static char[] a = new char[402];
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		for(int t=1;t<=10;t++) {
+			String s = br.readLine();
+			int N = Integer.parseInt(s);
+			System.out.print("#"+t+" ");
+			String[] temp;
+			for(int i=1;i<=N;i++) {
+				s = br.readLine();
+				temp = s.split(" ");
+				a[i] = temp[1].charAt(0);
+			}
+			
+			postOrder(a,1);
+			System.out.println();
+		}
+	}
+	static void postOrder(char[] a, int idx) {
+		if(a[idx]=='\u0000')
+			return;
+		postOrder(a, idx*2);
+		postOrder(a, idx*2+1);
+		System.out.print(a[idx]);
+//		cal(idx*2,idx*2+1,)
+	}
+}

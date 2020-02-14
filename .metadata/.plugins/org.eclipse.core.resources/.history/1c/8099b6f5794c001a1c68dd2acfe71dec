@@ -1,0 +1,65 @@
+package day8;
+
+import java.util.Scanner;
+
+public class SweaD43289 {
+	static int T,N,M,op,n1,n2;
+	static int[] parent;
+	   public static void main(String[] args) {
+		      Scanner sc = new Scanner(System.in);
+		      int tc = sc.nextInt();
+		      
+		      for (int t = 1; t <= tc; t++) {
+		         StringBuffer ans = new StringBuffer();
+		         
+		         int n = sc.nextInt();
+		         int m = sc.nextInt();
+		         
+		         int c, a, b;
+		         parent = new int[n + 1];
+		         
+		         for (int i = 0; i < n + 1; i++) parent[i] = i;
+		         
+		         for (int i = 0; i < m; i++) {
+		            c = sc.nextInt();
+		            a = sc.nextInt();
+		            b = sc.nextInt();
+		            
+		            if (c == 0) {
+		               union(a, b);
+		               continue;
+		            }
+		            
+		            if (findset(a) == findset(b)) ans.append("1");
+		            else ans.append("0");
+		         }
+		         
+		         System.out.println(String.format("#%d %s", t, ans.toString()));
+		      }
+		   }   
+	
+/*	static int findset(int x) {
+		if(x==parent[x]) {
+			return x;
+		}else {
+			return parent[x] = findset(parent[x]);
+		}
+	}*/
+static int findset(int idx) {
+    if (parent[idx] == idx) return idx;
+    return parent[idx] = findset(parent[idx]);
+ }		
+	
+	static void union(int x, int y) {
+		if(findset(x)==findset(y)) {
+			return;
+		}else {
+			parent[x] = y;
+		}
+	}
+	
+	static void makeset() {
+		for(int i=1;i<parent.length;i++)
+			parent[i]=i;
+	}
+}

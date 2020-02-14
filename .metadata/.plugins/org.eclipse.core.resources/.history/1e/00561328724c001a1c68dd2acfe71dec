@@ -1,0 +1,56 @@
+package day8;
+
+import java.util.Scanner;
+
+public class SweaD43289 {
+	static int T,N,M,op,n1,n2;
+	static int[] parent;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		T = sc.nextInt();
+		for(int t=1;t<=T;t++) {
+			N = sc.nextInt();
+			parent = new int[N+1];
+			makeset();
+			M = sc.nextInt();
+			for(int i=0;i<M;i++) {
+				op = sc.nextInt();
+				n1 = sc.nextInt();
+				n2 = sc.nextInt();
+				if(op==0) {
+					union(n1,n2);
+				}else {
+					if(parent[n1]==parent[n2]) {
+						System.out.print(1);
+					}else {
+						System.out.print(0);
+					}
+				}
+			}
+		}
+	}
+	
+	static int findset(int x) {
+		if(x==parent[x]) {
+			return x;
+		}else {
+			return parent[x] = findset(parent[x]);
+		}
+	}
+			
+	
+	static void union(int x, int y) {
+		if(findset(x)==findset(y)) {
+			return;
+		}else {
+			parent[y] = x;
+		}
+	}
+	
+	static void makeset() {
+		for(int i=1;i<=N;i++)
+			parent[i]=i;
+	}
+
+}

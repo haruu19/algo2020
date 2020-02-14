@@ -1,0 +1,63 @@
+package day7;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class D3_1233 {
+
+	static char[] a = new char[402];
+	static int val;
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		for(int t=1;t<=10;t++) {
+			String s = br.readLine();
+			int N = Integer.parseInt(s);
+			System.out.print("#"+t+" ");
+			String[] temp;
+			for(int i=1;i<=N;i++) {
+				s = br.readLine();
+				temp = s.split(" ");
+				a[i] = temp[1].charAt(0);
+			}
+			val = 1;
+			if(N%2==0) {
+				val = 0;
+			}else {
+				postOrder(a,1);
+			}
+			System.out.println(val);
+		}
+	}
+	static void postOrder(char[] a, int idx) {
+		if(val==0)
+			return;
+		if(a[idx]=='\u0000')
+			return;
+		if(a[idx*2]!='\u0000') {//리프노드가 아니면
+		int n = Character.getNumericValue(a[idx]);
+		if(check(n)) {//연산자가 아니면
+			val = 0;
+			return;
+		}
+		}else {
+			int n = Character.getNumericValue(a[idx]);
+			if(!check(n)) {
+				val = 0;
+				return;
+			}
+		}
+		postOrder(a, idx*2);
+		postOrder(a, idx*2+1);
+		System.out.print(a[idx]);
+//		if(a[idx*2]-48<1||a[idx*2]-48>9||a[idx*2+1]<1||a[idx*2+1]>9)
+		
+	}
+	
+	static boolean check(int n) {
+		if(n<1||n>9)
+			return false;
+		return true;
+	}
+	
+}

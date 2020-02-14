@@ -1,0 +1,45 @@
+package day7;
+
+public class A {
+	public static void main(String[] args) {
+		STree t = new STree();
+		t.setRoot('A');
+		t.addLeft('A','B');
+	}
+	static class STree{
+		Node root;
+		public void setRoot(char ch) {
+			Node temp = new Node(ch);
+			root = temp;
+
+		}
+		void addLeft(char parent, char data) {
+			Node p = search(parent);
+			if(p==null) {
+				System.out.println("못찾음");
+				return;
+			}
+			Node temp = new Node(data);
+			p.left = temp;
+		}
+		
+		static Node search(char parent) {
+			
+		}
+		
+	}
+	
+	static class Node{
+		char data;
+		Node left;
+		Node right;
+		public Node(char data) {
+			super();
+			this.data = data;
+		}
+		
+		
+	}
+
+	
+}

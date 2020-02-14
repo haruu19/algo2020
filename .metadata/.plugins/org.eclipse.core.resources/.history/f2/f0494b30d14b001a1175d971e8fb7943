@@ -1,0 +1,33 @@
+package day7;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class sweaInOrder {
+
+	public static void main(String[] args) throws IOException {
+		Scanner sc = new Scanner(System.in);
+		for(int t=1;t<=1;t++) {
+			String s = sc.nextLine();
+			int N = Integer.parseInt(s);
+			System.out.print("#"+t+" ");
+			char[] a = new char[N*2+2];
+			String[] temp;
+			for(int i=1;i<=N;i++) {
+				s = sc.nextLine()();
+				temp = s.split(" ");
+				a[i] = temp[1].charAt(0);
+			}
+			
+			inOrder(a,1);
+		}
+	}
+	static void inOrder(char[] a, int idx) {
+		if(a[idx]=='\u0000')
+			return;
+		inOrder(a, idx*2);
+		System.out.print(a[idx]);
+		inOrder(a, idx*2+1);
+	}
+
+}

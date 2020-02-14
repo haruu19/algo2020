@@ -1,0 +1,27 @@
+package day7;
+
+public class B {
+	public static void main(String[] args) {
+		int size = 10;
+		char[] datas = new char[26+1];
+		for(int i=1;i<=size;i++) {
+			datas[i]=(char)(i+64);//알파벳 입력
+		}
+		//inOrder()출력
+		inOrder(datas,1);
+		//findParend(5);
+		//findChild(3)
+	}
+	static void inOrder(char[] datas, int parent) {
+		//종료
+		if(parent == '\u0000') {
+			return;
+		}
+		//왼쪽출력
+		inOrder(datas, parent*2);
+		//부모출력
+		System.out.println(parent);
+		//오른쪽출력
+		inOrder(datas,parent*2+1);
+	}
+}

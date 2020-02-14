@@ -1,0 +1,21 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Tower2 {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(new FileInputStream("input.txt"));
+		
+	}
+	public static class Top() {
+		int height;
+		int num;
+		
+		Top(int num, int height){
+			
+		}
+	}
+}

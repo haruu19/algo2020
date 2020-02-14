@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class boj17471 {
+	static int N;
+	static boolean[] v;
+	static int[] p;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		p = new int[N+1];
+		for(int i=1;i<=N;i++)
+			p[i] = sc.nextInt();
+		int[][] a = new int[N+1][N+1];
+		for(int i=1;i<=N;i++) {
+			int n = sc.nextInt();
+			for(int j=0;j<n;j++) {
+				int m = sc.nextInt();
+				a[i][m] = 1;
+				a[m][i] = 1;
+			}
+		}
+		v = new boolean[N+1];
+		method(1);
+		
+	}
+	static void method(int idx) {
+		if(idx == N+1) {
+			
+			return;
+		}
+		//재귀, 현재 인덱스를 포함하는 경우
+		v[idx] = true;
+		method(idx+1);
+		//재귀, 현재 인덱스를 포함하지 않는 경우
+		v[idx] = false;
+		method(idx+1);
+	}
+}

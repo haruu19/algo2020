@@ -1,0 +1,18 @@
+package day7;
+
+public class sweaInOrder {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	static class BST{
+		Node root;
+	}
+	static class Node{
+		char data;
+		Node left;
+		Node right;
+	}
+}

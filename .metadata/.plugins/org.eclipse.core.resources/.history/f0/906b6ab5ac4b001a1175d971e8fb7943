@@ -1,0 +1,24 @@
+package day7;
+
+public class A {
+	public static void main(String[] args) {
+		STree t = new STree();
+		t.setRoot('A');
+	}
+	static class STree{
+		Node root;
+		public void setRoot(char ch) {
+			Node temp = new Node(ch);
+			root = temp;
+		}
+	}
+	static class Node{
+		char data;
+		Node left;
+		Node right;
+		public Node(char data) {
+			super();
+			this.data = data;
+		}
+	}
+}

@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class boj_3109 {
+	static int R;
+	static int C;
+	static char[][] a;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		R = sc.nextInt();
+		C = sc.nextInt();
+		sc.nextLine();
+		a = new char[R][C];
+		for(int i=0;i<R;i++) {
+			String s = sc.nextLine();
+			a[i] = s.toCharArray();
+		}
+			
+		for(int i=0;i<R;i++) {
+			method(i);
+		}
+		int ans = 0;
+		for(int i=0;i<R;i++) {
+			if(a[i][C-1]=='x')
+				ans++;
+		}
+		System.out.println(ans);
+	}
+	static void method(int idx) {
+		for(int i=1;i<C;i++) {
+			int k = 0;
+			for(k=0;k<3;k++) {
+				if(isOut(idx-1+k)||a[idx-1+k][i]=='x')
+					continue;
+				a[idx-1+k][i]='x';
+				idx = idx-1+k;
+				break;
+			}
+			if(k==3)
+				break;
+		}
+	}
+	static boolean isOut(int x) {
+		return (x<0||x>=R);
+	}
+}

@@ -1,0 +1,80 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+ 
+public class S5215{
+    static int answer;
+    static int N,L;
+    static int[] trace;
+    static int max;
+    static int count=0;
+    public static void main(String[] args) throws FileNotFoundException {
+        // TODO Auto-generated method stub
+        Scanner sc = new Scanner(new FileInputStream("input.txt"));
+        int T = sc.nextInt();
+        for(int t=1;t<=T;t++) {
+            N = sc.nextInt();
+            L = sc.nextInt();
+            int[][] a = new int[N][2];
+            for(int i=0;i<N;i++) {
+                a[i][0] = sc.nextInt();
+                a[i][1] = sc.nextInt();
+            }
+//            int[] d = new
+            boolean[] v = new boolean[N];
+            max = Integer.MIN_VALUE;
+            trace = new int[N];
+            dfs(a,v,0,0,0);
+             System.out.println(count);
+            System.out.println("#"+t+" "+max);
+        }
+    }
+    
+    static void dfs(int[][] a, boolean[] v, int tSum, int kSum, int depth) {
+    	//depth==N이면 종료
+    	//칼로리 L 이상이면 max값 갱신 후 종료.
+    	if(depth==N)
+    		return;
+    	for(int i=0;i<N;i++) {
+    		dfs(a,v,tSum,kSum,depth+1);
+    		
+    		v[i]=true;
+    		if(kSum+a[i][1]>=L) {
+    			max = Math.max(tSum, max);
+    		}
+    		tSum+=a[i][0];
+    		kSum+=a[i][1];
+    		dfs(a,v,tSum,kSum,depth+1);
+    	}
+//    	if(kSum>=L) {
+//    		max = Math.max(max, )
+//    	}
+    	
+    }
+    
+//    static void dfs(int[][] a, boolean[] v, int tSum, int kSum, int depth) {
+//        //종료 : 
+//        if(kSum>=L) {
+//        	count++;
+//            return;
+//        }
+//        //실행 및 재귀
+//        for(int i=0;i<N;i++) {
+//            if(v[i])
+//                continue;
+//            if(kSum+a[i][1]>L)
+//                continue;
+//            v[i] = true;
+//            tSum += a[i][0];
+//            max = Math.max(max, tSum);
+//            kSum += a[i][1];
+//            trace[depth] = i;
+//            depth++;
+//            dfs(a,v,tSum,kSum,depth);
+//            v[i] = false;
+//            tSum -= a[i][0];
+//            kSum -= a[i][1];
+//            depth--;
+//        }
+//    }
+}

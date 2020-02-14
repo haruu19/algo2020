@@ -1,0 +1,45 @@
+package nm;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class bojnm15649 {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String s = br.readLine();
+		String[] t = s.split(" ");
+		int[] a = new int[t.length];
+		for(int i=0;i<t.length;i++) {
+			a[i] = Integer.parseInt(t[i]);
+		}
+		int N = a[0];
+		int M = a[1];
+		boolean[] v = new boolean[N+1];
+		
+		dfs(N,M,0,0,v);
+	}
+	
+	static void dfs(int N, int M, int depth, int count, boolean[] v) {
+		if(count==M) {
+			for(int i=1;i<=N;i++) {
+				if(v[i])
+					System.out.print(i+" ");
+			}
+			System.out.println();
+			return;
+		}
+		
+		if(depth==N)
+			return;
+
+		for(int i=1;i<=N;i++) {
+			if(v[i])
+				continue;
+			v[i]=true;
+			dfs(N,M,depth+1,count+1,v);
+			v[i]=false;
+			dfs(N,M,depth+1,count,v);
+		}
+	}
+}

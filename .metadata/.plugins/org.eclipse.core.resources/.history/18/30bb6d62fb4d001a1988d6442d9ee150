@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class d4_4408 {
+	static class Ref{
+		int x;
+		int y;
+		Ref(int x, int y){
+			this.x=x;
+			this.y=y;
+		}
+	}
+	static int[] count = new int[10270+1];
+	static int[][] a;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		ArrayList<Ref> ref = new ArrayList<>();
+		for(int i=0;i<N;i++)
+			ref.add(new Ref(sc.nextInt(),sc.nextInt()));
+		
+		int size = ref.size();
+		while(size!=0) {
+			int t = ref.get(0).y;
+			Iterator<Ref> it = ref.iterator();
+			while(it.hasNext()) {
+				Ref temp = it.next();
+				if(temp.x<=t && temp.y>=t)
+					it.remove();
+			}
+			size = ref.size();
+		}
+//		int size = ref.size();
+//		while(size!=0) {
+//			int t = ref.get(0).y;
+//			for(Ref temp : ref) {
+//				if(temp.x<=t && temp.y>=t)
+//					ref.remove(temp);
+//			}
+//			size = ref.size();
+//		}
+	}
+}
