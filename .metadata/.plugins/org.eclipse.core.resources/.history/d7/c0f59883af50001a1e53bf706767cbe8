@@ -1,0 +1,103 @@
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class boj_17135 {
+	static class Enemy{
+		int x;
+		int y;
+		Enemy(int x, int y){
+			this.x = x;
+			this.y = y;
+		}
+	}
+	static int[] dx = {0,-1,0};
+	static int[] dy = {-1,0,1};
+	static int[][] map;
+	static int[][] v;
+	static int N,M,D;
+	static int ans;
+	static boolean[] archor;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		M = sc.nextInt();
+		D = sc.nextInt();
+		map = new int[N+1][M+1];
+		v = new boolean[N+1][M+1];
+		for(int i=1;i<=N;i++) {
+			for(int j=1;j<=M;j++) {
+				map[i][j]=sc.nextInt();
+			}
+		}
+		archor = new boolean[M+1];
+		comb(0,0);
+		System.out.println(ans);
+	}
+	
+	static void comb(int prev, int cnt) {
+		if(cnt == 3) {
+			play();
+			return;
+		}
+		
+		for(int i=1;i<=M;i++) {
+			if(i<=prev)
+				continue;
+			archor[i] = true;
+			comb(i,cnt+1);
+			archor[i] = false;
+		}
+	}
+	
+	static void play() {
+		//게임진행
+		int cnt = 1;
+		while(true) {
+			if(isClear())
+				break;
+			//적을 죽인다
+			for(int i=1;i<=M;i++)
+				if(archor[i])
+					kill(i);
+			for(int i=N;i>=1;i--)
+				map[i] = Arrays.copyOf(map[i-1], M+1);
+			for(int i=1;i<=cnt;i++)
+				Arrays.fill(map[i], 0);
+			cnt++;
+		}
+	}
+	
+	static void kill(int idx) {//bfs 로 접근
+		Queue<Enemy> enemy = new LinkedList<>();
+		enemy.offer(new Enemy(N, idx));
+		while(!enemy.isEmpty()) {
+			Enemy e = enemy.poll();
+			v[e.x][e.y] = true;
+			if(map[e.x][e.y]==1) {
+				map[e.x][e.y]=0;
+				break;
+			}
+			int nx,ny;
+			for(int i=0;i<3;i++) {
+				nx = e.x + dx[i];
+				ny = e.y + dy[i];
+				if(isOut(nx,ny)||v[nx][ny])
+			}
+		}
+	}
+	
+	static boolean isOut(int x, int y) {
+		return (x<1||x>N||y<1||y>M);
+	}
+	
+	static boolean isClear() {
+		for(int i=1;i<=N;i++)
+			for(int j=1;j<=M;j++)
+				if(map[i][j]!=0)
+					return false;
+		return true;
+	}
+}

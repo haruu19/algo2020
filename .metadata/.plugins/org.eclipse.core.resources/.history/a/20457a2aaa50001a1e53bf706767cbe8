@@ -1,0 +1,51 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class boj_17135 {
+	static int[] dx = {0,-1,0};
+	static int[] dy = {-1,0,1};
+	static int[][] map;
+	static int N,M,D;
+	static int ans;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		M = sc.nextInt();
+		D = sc.nextInt();
+		map = new int[N+1][M+1];
+		for(int i=1;i<=N;i++) {
+			for(int j=1;j<=M;j++) {
+				map[i][j]=sc.nextInt();
+			}
+		}
+		//Comb
+		//게임진행
+		int cnt = 1;
+		while(true) {
+			if(isClear())
+				break;
+			//적을 죽인다
+			method();
+			for(int i=N;i>=1;i--)
+				map[i] = Arrays.copyOf(map[i-1], M+1);
+			for(int i=1;i<=cnt;i++)
+				Arrays.fill(map[i], 0);
+			cnt++;
+		}
+		
+		System.out.println(ans);
+	}
+	
+	static void method() {
+		
+	}
+	
+	static boolean isClear() {
+		for(int i=1;i<=N;i++)
+			for(int j=1;j<=M;j++)
+				if(map[i][j]!=0)
+					return false;
+		return true;
+	}
+}
